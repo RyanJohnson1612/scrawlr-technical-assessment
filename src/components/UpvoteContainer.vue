@@ -6,12 +6,37 @@
         @upvoteSelected="setSelected()"
         :selected="selected === section"
         :key="index"
-        />
+      />
     </div>
     <AddUpvote @upvoteAdded="onUpvoteAdded()" />
   </section>
 </template>
 
+<script setup>
+  import { ref, computed } from 'vue';
+  import { useStore } from 'vuex';
+  import AddUpvote from './AddUpvote.vue';
+  import Upvote from './Upvote.vue';
+
+  const store = useStore();
+  const upvotes = ref(0);
+
+  const props = defineProps({
+    section: Number
+  });
+
+  const onUpvoteAdded = () => {
+    upvotes.value++;
+  }
+
+  const setSelected = () => store.commit('upvote/setSelected', props.section);
+
+  const selected = computed(() => {
+    return store.getters['upvote/getSelected']
+  });
+</script>
+
+<!--
 <script>
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
@@ -45,6 +70,7 @@ export default {
   }
 }
 </script>
+-->
 
 <style>
   section {
