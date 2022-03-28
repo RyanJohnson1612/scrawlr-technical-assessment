@@ -8,14 +8,14 @@
         :key="index"
       />
     </div>
-    <AddUpvote @upvoteAdded="onUpvoteAdded()" />
+    <AddUpvoteButton @upvoteAdded="onUpvoteAdded()" />
   </section>
 </template>
 
 <script setup>
   import { ref, computed } from 'vue';
   import { useStore } from 'vuex';
-  import AddUpvote from './AddUpvote.vue';
+  import AddUpvoteButton from './AddUpvoteButton.vue';
   import Upvote from './Upvote.vue';
 
   const store = useStore();

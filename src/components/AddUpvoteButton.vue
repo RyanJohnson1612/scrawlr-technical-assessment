@@ -1,22 +1,11 @@
 <template>
-  <button @click="addUpvote()" class="add-upvote">
+  <button @click="$emit('upvoteAdded')" class="add-upvote">
     <img src="../assets/plus.svg" alt="plus sign">
   </button>
 </template>
 
-<script>
-export default {
-  setup(props, { emit }) {
-
-    const addUpvote = () => {
-      emit('upvoteAdded');
-    }
-
-    return {
-      addUpvote
-    }
-  }
-}
+<script setup>
+  const emit = defineEmits(['upvoteAdded']);
 </script>
 
 <style>
