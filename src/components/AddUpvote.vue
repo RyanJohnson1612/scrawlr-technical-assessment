@@ -1,0 +1,36 @@
+<template>
+  <button @click="addUpvote()" class="add-upvote">
+    <img src="../assets/plus.svg" alt="plus sign">
+  </button>
+</template>
+
+<script>
+export default {
+  setup(props, { emit }) {
+
+    const addUpvote = () => {
+      emit('upvoteAdded');
+    }
+
+    return {
+      addUpvote
+    }
+  }
+}
+</script>
+
+<style>
+  .add-upvote {
+    margin-left: 20px;
+    padding: 12px;
+    border: 0;
+    border-radius: 12px;
+    background: #f4f6f8;
+    line-height: 0;
+  }
+
+  .add-upvote:hover {
+    background: #e3e3e3;
+    cursor: pointer;
+  }
+</style>
